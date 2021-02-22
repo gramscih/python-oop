@@ -5,8 +5,8 @@
 1. Introduction to Python 
 2. Introduction to OOP 
 3. UML
-4. Implement our own objects
-5. Design our own objects
+4. Desing our own objects
+5. Implement our own objects
 
 # Course Content (2/3)
 6. Exception Handling
@@ -14,10 +14,7 @@
 8. Comparing Objects
 9. Polymorphism
 10. Testing
-
-# Course Content (3/3)
 11. Inheritance
-12. 
 
 # Scoring
 - Practices (40/100)
@@ -73,7 +70,7 @@ sudo apt-get install python-pip
 - Go to python web page [here](https://www.python.org/downloads/)
 - Download Windows installer.
 - Important, check the checkbox to "Add Python 3.x to PATH".
-![](python_path.png)
+![](session-01/python_path.png)
 
 # Virtual Environments for Python (virtualenv)
 Is a way that you can separate different python environments for different projects. 
