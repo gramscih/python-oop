@@ -70,7 +70,7 @@ sudo apt-get install python-pip
 - Go to python web page [here](https://www.python.org/downloads/)
 - Download Windows installer.
 - Important, check the checkbox to "Add Python 3.x to PATH".
-![](session-01/python_path.png)
+![](slides/session-01/python_path.png)
 
 # Virtual Environments for Python (virtualenv)
 Is a way that you can separate different python environments for different projects. 
