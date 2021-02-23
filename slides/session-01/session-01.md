@@ -112,10 +112,10 @@ deactivate
 | -------- | :------------- |
 | +        | Addition       |
 | -        | Subtraction    |
-| *        | Multiplication |
+| `*`        | Multiplication |
 | /        | Division       |
 | %        | Modulus        |
-| **       | Exponentiation |
+| `**`       | Exponentiation |
 | //       | Floor division |
 
 # Comparison Operators
