@@ -150,7 +150,7 @@ deactivate
 # Bitwise Operators
 - Used to compare (binary) numbers 
 
-| Operator | Name                 |                           |
+| Operator | Name                 |
 | -------- |:---------------------|
 | &        | AND                  |
 | `|`      | OR                   |
