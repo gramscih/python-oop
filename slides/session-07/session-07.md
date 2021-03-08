@@ -18,10 +18,12 @@ colortheme: seahorse
 import logging
 
 # Configure logging
-logging.basicConfig(filename='test.log', level=logging.DEBUG)
+logging.basicConfig(filename='test.log', 
+    level=logging.DEBUG)
 
 # how to use
-logging.debug('<Class_name>:<Function_name>: {}'.format(args))
+logging.debug('<Class_name>:<Function_name>: {}'.
+    format(args))
 ```
 
 # Physics problem
