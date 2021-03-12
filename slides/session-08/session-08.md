@@ -87,3 +87,25 @@ www.pygame.org/wiki/about
 # Radians used in computer games
 ![](radians_game.png)
 
+# Starting with pygame
+Installation
+```
+pip install pygame
+```
+
+# Use pygame lib
+```python
+import pygame
+
+# infinite loop
+run = True
+while run:
+  WIN = pygame.display.set_mode(width, height)
+  for event in pygame.event.get():
+    if event.type == pygame.QUIT:
+      run = False
+  pygame.quit()
+  # Add color to the window
+  WIN.fill(COLOR)
+
+```
