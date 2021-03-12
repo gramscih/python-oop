@@ -23,7 +23,15 @@ class MainWindow:
         except:
             self.__angle = math.pi / 2
 
-        # mission code
+        if mouse_pos[1] < position_y and mouse_pos[0] > position_x:
+            # abs() function returns the absolute value. That mean always a positive value
+            self.__angle = abs(self.__angle)
+        elif mouse_pos[1] < position_y and mouse_pos[0] < position_x:
+            self.__angle = math.pi - self.__angle
+        elif mouse_pos[1] > position_y and mouse_pos[0] < position_x:
+            self.__angle = math.pi + abs(self.__angle)
+        elif mouse_pos[1] > position_y and mouse_pos[0] > position_x:
+            self.__angle = (math.pi * 2) - self.__angle
 
 
     def run_win(self):
