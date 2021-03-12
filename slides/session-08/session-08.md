@@ -8,8 +8,10 @@ colortheme: seahorse
 
 # Content
 + Lets refactor our static functions
++ Lets introduce constants
 + Use our Physics lib
 + Physics in games
++ Introducing pygame
 
 # Physics
 ![](parabolic.png)
@@ -38,6 +40,15 @@ In session-07 we tried to use the library with
 static function but until use them we need to make
 some changes into them
 
+# Constants
+```python
+# Constants in python use capital letters
+# Different ways to deffine into a project
+# Could be deffinet out of the class in the top
+# or into a different file (constants.py)
+GRAVITY = 9.8
+```
+
 # Static Methods/Functions
 ```python
 # to use static methods you can use the 
@@ -58,4 +69,21 @@ with velocity 26 m/s and 40 grade. Calculate:
 
 # Physics in games
 ![](game.png)
+
+# Pygame
+*"Is a set of python modules designed for writing video games.
+Pygame adds functionality on top of the excellent
+SDL (Simple DirectMedia Layer) library"*
+
+www.pygame.org/wiki/about
+
+# Lets start with basics
+## Computer axis
+![](axis.png)
+
+# Radians for parabolic movement
+![](radians.png)
+
+# Radians used in computer games
+![](radians_game.png)
 
