@@ -22,3 +22,11 @@ class Person(object):
     def is_sick(self, new_value):
         self.__is_sick = new_value
 
+    @property
+    def gender(self):
+        return self.__gender
+
+    @property
+    def age(self):
+        return self.__age
+

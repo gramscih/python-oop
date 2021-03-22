@@ -1,5 +1,6 @@
 class Bitacora(object):
     def __init__(self):
+        print("Some thing")
         self.__people_sick = []
         self.__people_recovered = []
         self.__people_helthy = []
@@ -12,6 +13,9 @@ class Bitacora(object):
 
     def add_helthy_person(self, person):
         self.__people_helthy.append(person)
+
+    def remove_sick_person(self, person):
+        self.__people_sick.remove(person)
 
     @property
     def people_sick(self):

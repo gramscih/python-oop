@@ -23,8 +23,20 @@ class PandemicControl(object):
         print(f"----------------------For the City: [{self.__city}]----------------------")
         sick_number = report_generator.get_sicks(people)
         recovered = report_generator.get_recover(people)
+        female_sicks = report_generator.get_sicks_by_gender(people, "Female")
+        male_sick = report_generator.get_sicks_by_gender(people, "Male")
+        kid_sicks = report_generator.get_sicks_by_age(people, "kid")
+        youg_sick = report_generator.get_sicks_by_age(people, "young")
+        adult_sick = report_generator.get_sicks_by_age(people, "adult")
+
         print(f"The number of persons that are sick is [{sick_number}]")
         print(f"The number of persons that are recovered from the sickness is [{recovered}]")
+        print(f"The number of Men that are sick is [{male_sick}]")
+        print(f"The number of Women that are sick is [{female_sicks}]")
+        print(f"The number of Women that are sick is [{kid_sicks}]")
+        print(f"The number of Women that are sick is [{youg_sick}]")
+        print(f"The number of Women that are sick is [{adult_sick}]")
+        # print(f"The number of persons that are recovered from the sickness is [{recovered}]")
 
         print(self.__people)
 
