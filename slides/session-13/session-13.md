@@ -1,7 +1,7 @@
 ---
 title: Object Oriented Programming with Python
 author: Gramsci Hermozo
-institute: Session 1
+institute: Session 13
 theme: Copenhagen
 colortheme: seahorse
 ---
