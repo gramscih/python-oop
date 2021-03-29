@@ -1,4 +1,6 @@
 # code/*
 *.DS_Store
 __pycache__
-.pytest_cache
+code/session-15/server/bin/*
+code/session-15/server/lib/*
+code/session-15/server/pyvenv.cfg
