@@ -43,7 +43,7 @@ while providing a global access point to this instance.
 
 # Practice
 ## Lets practices
-Un grupo de inversionistas esta nos contacto para poder implementar un sistema
+Un grupo de inversionistas nos contacto para poder implementar un sistema
 con las siguientes caracteristicas.
 
 + Necesitan que un administrador pueda agregar/registrar personas.
