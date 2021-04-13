@@ -1,0 +1,4 @@
+lib
+bin
+*.cfg
+__pycache__
