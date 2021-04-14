@@ -1,4 +1,4 @@
-from pandemic_reporter.pandemic_report.person import Person
+from pandemic_report.person import Person
 
 class Bitacora(object):
     _instance = None

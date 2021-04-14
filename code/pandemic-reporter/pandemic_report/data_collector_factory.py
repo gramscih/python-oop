@@ -1,7 +1,7 @@
 # from data_collector import DataCollector
-import pandemic_reporter.pandemic_report.data_collector as data_collector
-import pandemic_reporter.pandemic_report.data_collector_api as data_collector_api
-import pandemic_reporter.pandemic_report.data_collector_csv as data_collector_csv
+import pandemic_report.data_collector as data_collector
+import pandemic_report.data_collector_api as data_collector_api
+import pandemic_report.data_collector_csv as data_collector_csv
 
 class DataCollectorFactory(object):
     @staticmethod

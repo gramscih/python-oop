@@ -1,9 +1,9 @@
 import logging
-import pandemic_reporter.pandemic_report.constants as constants
+import pandemic_report.constants as constants
 
-from pandemic_reporter.pandemic_report.bitacora import Bitacora
-from pandemic_reporter.pandemic_report.data_collector_factory import DataCollectorFactory
-from pandemic_reporter.pandemic_report.custom_exceptions import ExceptionEmptyValues, ExceptionNoInstanceFound
+from pandemic_report.bitacora import Bitacora
+from pandemic_report.data_collector_factory import DataCollectorFactory
+from pandemic_report.custom_exceptions import ExceptionEmptyValues, ExceptionNoInstanceFound
 
 class DataLoader(object):
     def __init__(self, logger=None):
@@ -27,6 +27,9 @@ class DataLoader(object):
                 self.logger.debug(f"load_data: Exception [{ex}] - No values for collector name [{collector_name}]")
                 error = "Empty values"
                 continue
+            except Exception as ex:
+                self.logger.debug(f"load_data: Exception [{ex}]]")
+                continue
             
             for patient in patients:
                 if patient.is_sick:
@@ -37,9 +40,9 @@ class DataLoader(object):
         
     def __get_data(self, collector):
         values = collector.get_patients()
-        if len(values) == 0:
+        if not constants.POSIBLE_STATUS_CODES.get(values[0]).get("is_good"):
             raise ExceptionEmptyValues("Empty value")
-        return values
+        return values[-1]
 
     def __get_instance(self, collector_name):
         self.logger.info("Calling get instance...")
