@@ -2,10 +2,14 @@ import pandemic_report.constants as constants
 import logging
 import os
 
+from pandemic_report.person import Person
 from pandemic_report.data_loader import DataLoader
 from pandemic_report.report_generator import ReportGeneretor
 
-run = True
+logger = None
+rpt = None
+# dl = DataLoader(logger)
+dl = None
 
 def generate_report(opt):
     if opt == '1':
@@ -25,6 +29,20 @@ def generate_report(opt):
         print(f"Adults that are sick are: [{adult}]")
     if opt == '4':
         pass
+    if opt == '5':
+        p_id = input("ID: ")
+        full_name = input("Full name: ")
+        age = input("Age: ")
+        gender = input("Gender: ")
+        covid = input('Covid: ')
+        registry(p_id, full_name, age, gender, covid)
+
+def registry(id, full_name, age, gender, covid):
+    name, lname = full_name.split(' ')
+    person = Person(id, name, lname, age, gender)
+    person.is_sick = True if covid else False
+    dl.registry_patient(person)
+
 
 def get_logger():
     logger = logging.getLogger(__name__)
@@ -38,26 +56,41 @@ def get_logger():
     logger.addHandler(file_handler)
     return logger
 
-logger = get_logger()
-rpt = ReportGeneretor(logger)
-dl = DataLoader(logger)
-dl.load_data()
-logger.debug("Starting Application...")
-while run:
-    print("***********************************************************")
-    print("1. All people sick")
-    print("2. Classified by gender")
-    print("3. Classified by Ege")
-    print("4. Get a complete report")
-    print("4. Get a complete report")
-
-    print("5. Exit")
-    print("***********************************************************")
-    opt = input("Select an option: ")
-    if opt == '5':
-        run = False
-    else:
-        generate_report(opt)
-    
-# if __name__ == "__main__":
+# def initializer():
+#     print('INITIALIZER')
 #     logger = get_logger()
+#     rpt = ReportGeneretor(logger)
+#     print('INITIALIZER 2')
+#     dl = DataLoader(logger)
+
+def run_app():
+    run = True
+    print('RUN APP')
+    global logger
+    logger = get_logger()
+    global rpt
+    rpt = ReportGeneretor(logger)
+    global dl
+    dl = DataLoader(logger)
+    print(f'RUN APP DATA LOADER [{dl}]')
+    dl.load_data()
+    logger.debug("Starting Application...")
+    while run:
+        print("***********************************************************")
+        print("1. All people sick")
+        print("2. Classified by gender")
+        print("3. Classified by Ege")
+        print("4. Get a complete report")
+        print("5. Registry patient manualy")
+
+        print("6. Exit")
+        print("***********************************************************")
+        opt = input("Select an option: ")
+        if opt == '6':
+            run = False
+        else:
+            generate_report(opt)
+    
+
+if __name__ == "__main__":
+    run_app()

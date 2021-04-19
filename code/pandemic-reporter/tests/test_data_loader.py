@@ -1,7 +1,7 @@
 from unittest import mock
-from pandemic_reporter.pandemic_report.data_loader import DataLoader
-from pandemic_reporter.pandemic_report.person import Person
-from pandemic_reporter.pandemic_report.bitacora import Bitacora
+from pandemic_report.data_loader import DataLoader
+from pandemic_report.person import Person
+from pandemic_report.bitacora import Bitacora
 
 class MockCollector(object):
     def __init__(self, mode=None):
@@ -9,7 +9,7 @@ class MockCollector(object):
         self.fill_patients(mode)
 
     def get_patients(self):
-        return self.patients
+        return (200, "Ok",self.patients)
 
     def fill_patients(self, mode):
         if not mode:
@@ -33,14 +33,14 @@ class MockCollector(object):
 #     def get_patients(self):
 #         return self.patients
 
-@mock.patch("pandemic_reporter.pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
+@mock.patch("pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
 def test_load_data_correct_loading(mock_get_collector_instance):
     mock_get_collector_instance.return_value = MockCollector()
     dt = DataLoader()
     (status, error) = dt.load_data()
     assert status == True
 
-@mock.patch("pandemic_reporter.pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
+@mock.patch("pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
 def test_load_data_none_collector(mock_get_collector_instance):
     mock_get_collector_instance.return_value = None
     dt = DataLoader()
@@ -48,9 +48,17 @@ def test_load_data_none_collector(mock_get_collector_instance):
     assert status == False
     assert error == "Not Conllector Instance"
 
-@mock.patch("pandemic_reporter.pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
+@mock.patch("pandemic_report.data_loader.DataCollectorFactory.get_data_collector_instance")
 def test_load_data_empty_result(mock_get_collector_instance):
     mock_get_collector_instance.return_value = MockCollector("Empty")
     dt = DataLoader()
     (status, error) = dt.load_data()
     assert status == True
+
+def test_registry_patient_no_sick():
+    patient = Person(123, "Gramsci", "Hermozo", 25, "Male")
+    patient.is_sick = "No"
+    dt = DataLoader()
+    dt.registry_patient(patient)
+    bitacora = Bitacora()
+    assert len(bitacora.people_helthy) == 1

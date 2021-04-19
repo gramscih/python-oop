@@ -18,6 +18,7 @@ class DataLoader(object):
             try:
                 data_collector = self.__get_instance(collector_name)
                 patients = self.__get_data(data_collector)
+                self.logger.debug(f"Patients recovered {patients} - for collector [{collector_name}]")
             except ExceptionNoInstanceFound as ex:
                 self.logger.debug(f"load_data: Exception [{ex}] - For collector name [{collector_name}]")
                 status = False
@@ -30,6 +31,10 @@ class DataLoader(object):
             except Exception as ex:
                 self.logger.debug(f"load_data: Exception [{ex}]]")
                 continue
+
+            if not patients:
+                self.logger.debug(f"load_data: No data for the following collector {collector_name}")
+                continue
             
             for patient in patients:
                 if patient.is_sick:
@@ -38,10 +43,15 @@ class DataLoader(object):
                     self.__bitacora.add_helthy_person(patient)
         return (status, error)
         
+    def registry_patient(self, person):
+        print(constants.POSIBLE_VALUES_SICK.get(person.is_sick.lower()))
+        if constants.POSIBLE_VALUES_SICK.get(person.is_sick.lower()):
+            self.__bitacora.add_sick_person(person)
+        else:
+            self.__bitacora.add_helthy_person(person)
+    
     def __get_data(self, collector):
         values = collector.get_patients()
-        if not constants.POSIBLE_STATUS_CODES.get(values[0]).get("is_good"):
-            raise ExceptionEmptyValues("Empty value")
         return values[-1]
 
     def __get_instance(self, collector_name):
