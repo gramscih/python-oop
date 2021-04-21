@@ -16,7 +16,7 @@ class DataCollectorCsv(DataCollector):
 
     def __load_data(self):
         with open('src/report.csv', 'r') as file:
-            reader = csv.reader(file)
+            reader = csv.reader(file) # MockResponse -> Unittest
             # Reade result
             # "name, lastname, age, gender"
             # "name1, lastname1, 23, female"
